@@ -8,7 +8,7 @@ services:
     depends_on: 
     - mongodb
   redis:
-    image: redis:7
+    image: redis:7.0
     container_name: redis
   user:
     image: user:v1
@@ -34,6 +34,9 @@ services:
   rabbitmq:
     image: rabbitmq:3
     container_name: rabbitmq
+    environment:
+    RABBITMQ_DEFAULT_USER: roboshop
+    RABBITMQ_DEFAULT_PASS: roboshop123 
   payment: 
     image: payment:v1
     container_name: payment
