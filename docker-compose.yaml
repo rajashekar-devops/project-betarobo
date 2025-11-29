@@ -2,6 +2,8 @@ services:
   mongodb:
     image: mongodb:v1
     container_name: mongodb
+    volumes:
+    - /data/db
   catalogue:
     image: catalogue:v1
     container_name: catalogue
@@ -10,6 +12,8 @@ services:
   redis:
     image: redis:7.0
     container_name: redis
+    volumes:
+    - /data
   user:
     image: user:v1
     container_name: user
@@ -25,6 +29,8 @@ services:
   mysql:
     image: mysql:v1
     container_name: mysql
+    volumes:
+    - /var/lib/mysql
   shipping:
     image: shipping:v1
     container_name: shipping
@@ -34,6 +40,8 @@ services:
   rabbitmq:
     image: rabbitmq:3
     container_name: rabbitmq
+    volumes:
+    - /var/lib/rabbitmq
     environment:
       RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshop123 
@@ -60,3 +68,8 @@ networks:
     driver: bridge
     name: roboshop
     external: false
+volumes:  
+  mongodb:  #Its equivalent to "docker volumes create mongodb"
+  redis:
+  mysql:
+  rabbitmq:
